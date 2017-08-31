@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>AgileCode.SimpleEventProcessor</PackageId>
+    <Authors>AgileCode.SimpleEventProcessor</Authors>
+    <Company>agile-code.com</Company>
+    <Product>AgileCode.SimpleEventProcessor</Product>
+    <Copyright>agile-code.com</Copyright>
+    <Description>AgileCode.SimpleEventProcessor is as the name says, an event processor that exposes clear interfaces for message input, processing and message output.</Description>
+    <PackageTags>simple event processing, event processor,</PackageTags>
+    <PackageReleaseNotes>First version</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Version>1.0.0-beta</Version>
+  </PropertyGroup>
+
+</Project>
