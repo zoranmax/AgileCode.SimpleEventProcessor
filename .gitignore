@@ -1,5 +1,9 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/src/AgileCode.SimpleEventProcessor/bin/Debug/netstandard2.0
+.vs
+/src/AgileCode.SimpleEventProcessor/bin
+/src/AgileCode.SimpleEventProcessor/obj
+/src/AgileCode.SimpleEventProcessor.Tests/bin
+/src/AgileCode.SimpleEventProcessor.Tests/obj
+*.suo

@@ -16,8 +16,7 @@ namespace AgileCode.SimpleEventProcessor.Tests.Adapters
 
         public bool IsRunning
         {
-            get => throw new System.NotImplementedException();
-            set => throw new System.NotImplementedException();
+            get;set;
         }
 
         public bool IsPaused {
@@ -35,22 +34,22 @@ namespace AgileCode.SimpleEventProcessor.Tests.Adapters
 
         public void Pause()
         {
-            throw new System.NotImplementedException();
+            this.IsRunning = false;
         }
 
         public void Start()
         {
-            throw new System.NotImplementedException();
+            this.IsRunning = true;
         }
 
         public void Stop()
         {
-            throw new System.NotImplementedException();
+            this.IsRunning = false;
         }
 
         public void UnPause()
         {
-            throw new System.NotImplementedException();
+            this.IsRunning = true;
         }
     }
 }

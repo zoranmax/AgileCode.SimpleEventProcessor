@@ -27,12 +27,14 @@ namespace AgileCode.SimpleEventProcessor.Tests
         public void CanStartProcessor()
         {
             var inputAdapter = new Mock<IInputAdapter>();
+            var logger = new ConsoleLogger();
             inputAdapter.SetupAllProperties();
 
             inputAdapter.Object.IsRunning = false;
             inputAdapter.Setup(action => action.Start()).Callback(() => inputAdapter.Object.IsRunning = true);
 
-            var eventSystem = new SimpleEventProcessorRunner(new QueuedEventProcessor(null, null, null, 1), inputAdapter.Object, new ConsoleLogger());
+            var eventSystem = 
+                new SimpleEventProcessorRunner(new QueuedEventProcessor(null, null, logger, 1), inputAdapter.Object, logger);
 
             eventSystem.Start();
 
@@ -47,14 +49,17 @@ namespace AgileCode.SimpleEventProcessor.Tests
             Assert.True(isAdapterRunning);
         }
 
-        [Test(Description = "Checks that starting and stopping the EventSystem actually start/stop the adapter too.")]
-        public void CanStopProcesso2r()
+        [Test(Description = "Checks that the processor can be stopped.")]
+        public void CanStopProcessor()
         {
             var inputAdapter = new StoppingAdapter();
+            var logger = new ConsoleLogger();
+            var processor = new QueuedEventProcessor(null, null, logger, 1);
 
-            var eventSystem = new SimpleEventProcessorRunner(new QueuedEventProcessor(null, null, null, 1), inputAdapter, new ConsoleLogger());
+            var eventSystem = new SimpleEventProcessorRunner(processor, inputAdapter, logger);
 
             eventSystem.Start();
+            Thread.Sleep(1000);
             eventSystem.Stop();
             Thread.Sleep(50);
             var isAdapterRunning = true;
@@ -66,26 +71,6 @@ namespace AgileCode.SimpleEventProcessor.Tests
             }
 
             Assert.False(isAdapterRunning);
-        }
-
-        [Test]
-        [Explicit]
-        public void CanProcessAnEvent()
-        {
-
-            AdapterMock adapterMock = new AdapterMock();
-            OutputAdapterMock outputAdapterMock = new OutputAdapterMock();
-            var eh = new QueuedEventProcessor(null, outputAdapterMock, null, 1);
-            var eventSystem = SimpleEventProcessorRunner.CreateNew(eh, adapterMock, new ConsoleLogger());
-            eventSystem.Start();
-
-            for (int i = 0; i < 10; i++)
-            {
-                adapterMock.Enqueue(new Event(Guid.NewGuid().ToString(), i.ToString()));
-            }
-            Thread.Sleep(1000);
-
-            eventSystem.Stop();
         }
     }
 }

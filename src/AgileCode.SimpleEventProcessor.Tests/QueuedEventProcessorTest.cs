@@ -9,9 +9,9 @@ namespace AgileCode.SimpleEventProcessor.Tests
         [Test]
         public void ProcessorReturnsFalseIfCapacityReached()
         {
-            var capacity = 5;
-            var numberOfEventsGreaterThanCapacity = 10; //random number bigger than the capacity.
-            var numberOfEventsLessThanCapacity = 4; //random number less than the capacity.
+            int capacity = 5;
+            int numberOfEventsGreaterThanCapacity = 10; //random number bigger than the capacity.
+            int numberOfEventsLessThanCapacity = 4;     //random number less than the capacity.
 
             var processor = new QueuedEventProcessor(null, null, null, capacity);
 
