@@ -36,3 +36,12 @@ IInputAdatpter can be `started` or `stopped`, which makes it easy for the applic
 * **IActionHandler**: By implementing this interface, we would typically implement the business logic of some kind. For instance, the transformation of the message we received as an input, etc. The result of this business logic will be passed to the `IOutputAdapter`.
 
 * **IOutputAdapter**:  As its name says, it is responsible for communicating with an external resource. It might be a database, another Message Broker system, or simply a return message to the source (Acknowledgement).
+
+## Do you want to contribute?
+Please contact me directly, and I would be delighted to help you helping me out.
+The aim would be to:
+- Improve the logging capabilities
+- Improve the testability of the application
+- Create templates so that the users can start very quickly to use the technology
+- Implement a remote API calls so that the library can offer some more benefits like real-time monitoring, etc..
+- many more ideas!
